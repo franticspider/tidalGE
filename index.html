@@ -1,0 +1,29 @@
+<html>
+  <head><title>My Home Page</title></head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <body onload="getText('README.md')">
+      <script>  
+        // get markdown content  
+        var body_location = 'README.md';
+                
+        function getText(myUrl){
+            var result = null;
+            $.ajax( { url: myUrl, 
+                      type: 'get', 
+                      dataType: 'html',
+                      async: false,
+                      success: function(data) { result = data; } 
+                    }
+            );
+            FileReady = true;
+            return result;
+        }
+        var markdown_source = getText(body_location);
+        // convert markdown to html
+        var output = markdown.toHTML( markdown_source );
+        document.write(output);
+      </script>
+
+
+  </body>
+</html>

@@ -1,4 +1,7 @@
 // To save as "<TOMCAT_HOME>\webapps\hello\WEB-INF\classes\HelloServlet.java"
+
+
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -47,7 +50,7 @@ public class HelloServlet extends HttpServlet {
  
       // Write the response message, in an HTML page
       try {
-        out.print("d1 $ sound \"bd sn cp cp \"");
+        out.print("d1 $ sound \"bd sn cp cp bev \"");
         /*
          out.println("<html>");
          out.println("<head><title>Hello, World</title></head>");

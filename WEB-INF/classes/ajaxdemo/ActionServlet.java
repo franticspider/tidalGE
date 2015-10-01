@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 //@WebServlet("/sayhi")
 public class ActionServlet extends HttpServlet {
- private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     
     public ActionServlet() {

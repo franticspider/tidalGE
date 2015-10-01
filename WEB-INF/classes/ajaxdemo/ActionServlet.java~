@@ -26,9 +26,9 @@ public class ActionServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name=null;
-        name = "Hello "+request.getParameter("user");
+        name = "Hello Idiot"+request.getParameter("user");
         if(request.getParameter("user").toString().equals("")){
-            name="Hello User";
+            name="Hello Idiot User";
         }
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 

@@ -43,11 +43,11 @@ public class HelloServlet extends HttpServlet {
 
     System.out.println("wibble");
 
-    System.out.print(request.getParameterNames());
+    System.out.println(request.getParameterNames());
  
       // Write the response message, in an HTML page
       try {
-        out.print("d1 $ sound \"bd sn cp cp \"");
+        out.print("d1 $ sound \"bd sn cp cp bev \"");
         /*
          out.println("<html>");
          out.println("<head><title>Hello, World</title></head>");
