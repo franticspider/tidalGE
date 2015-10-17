@@ -10,7 +10,7 @@
   $(document).ready(function() {                        
     $('#tokenizer').click(function(event) {  
       var pattern=$('#input').val();
-      $.get('TidalGEServlet',{input:pattern},function(responseText) { 
+      $.get('parsetidal',{input:pattern},function(responseText) { 
         $('#tokenized').text(responseText);         
       });
     });

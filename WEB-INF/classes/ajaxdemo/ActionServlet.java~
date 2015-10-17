@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 //@WebServlet("/sayhi")
 public class ActionServlet extends HttpServlet {
- private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     
     public ActionServlet() {
@@ -27,7 +28,7 @@ public class ActionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name=null;
         name = "Hello Idiot"+request.getParameter("user");
-        if(request.getParameter("user").toString().equals("")){
+        if(request.getParameter("input").toString().equals("")){
             name="Hello Idiot User";
         }
         response.setContentType("text/plain");  
