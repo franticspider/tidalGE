@@ -158,6 +158,7 @@ public class ParserServlet extends HttpServlet {
         
         System.out.println("Pattern is: "+pattern);
         
+        /** This is the old tokenizer stuff - we're using antlr now...
         if(pattern !=null){
           try{
             tokenizer.tokenize(pattern);//"d1 $ sojjund \" bd bd \"");
@@ -168,7 +169,7 @@ public class ParserServlet extends HttpServlet {
             else{
 	            for (Tokenizer.Token tok : tokenizer.getTokens())
 	            {
-	              answer+=/*"" + tok.token + " " +*/ tok.sequence + " ";
+	              answer+= tok.sequence + " ";
 	            }
             }
           }
@@ -179,8 +180,19 @@ public class ParserServlet extends HttpServlet {
           }
         
         }
+        */
+        /*TODO: We need to verify that the pattern is workable with the grammar
+        * for now, let's just reject 1/3 of submissions so we can get the browser logic right.
+        */
+        answer = pattern;
+        boolean validpattern = true;
+        if(Math.random() < 0.3){
+        	validpattern=false;
+        }
         
         
+        
+  
         response.setContentType("text/plain");  
         response.setCharacterEncoding("UTF-8"); 
         //response.getWriter().write(answer); 
@@ -195,7 +207,7 @@ public class ParserServlet extends HttpServlet {
       	System.out.println("Response is: "+answer2);
       	
       	/** WE MUST RETURN JSON DATA */
-      	out.print("{\"response\": \""+answer2+"\"}");////\""+answer+"\"");
+      	out.print("{\"response\": \""+answer2+"\",\"valid\":\""+validpattern+"\"}");////\""+answer+"\"");
         
     }
 
