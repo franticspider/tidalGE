@@ -27,10 +27,6 @@ requests a mutated individual from the population
 
 
 
-
-
-
-
 #Development notes
 
 ##Current todo:
