@@ -5,16 +5,130 @@
 <title>AJAX calls using Jquery in Servlet</title>
 <script src="http://code.jquery.com/jquery-latest.js">   
 </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
-  $(document).ready(function() {                        
-    $('#tokenizer').click(function(event) {  
-      var pattern=$('#input').val();
-      $.get('parsetidal',{input:pattern},function(responseText) { 
-        $('#tokenized').text(responseText);         
-      });
-    });
-  });
+	$(document).ready(function() {                        
+		$('#tokenizer').click(function(event) {  
+			/* This was the original version */
+			//var pattern=$('#input').val();
+			//$.get('parsetidal',{input:pattern},function(responseText){ 
+			//  $('#tokenized').text(responseText);         
+			//});
+			
+			$.ajax({
+				url: 'parsetidal',
+				data: 'd1 $ sound "bd sn cp bev"',
+				dataType   : 'json',
+				contentType: 'application/json',
+			    method: "GET",//method,
+			    success: function(data, state, res){
+			        //dabutton.setAttribute('disabled',false);
+			        dabutton.attr('disabled',false);
+			        edit_box.css('border-color', 'yellow');
+			        edit_box.css('color', 'yellow');
+			        if(data){
+			        }
+			    },
+			    error: function(data, state){
+					//dabutton.setAttribute('disabled',false);
+					edit_box.css('border-color', 'red');
+					//$error.text(state);
+					console.log("Data is:");
+					console.log(data);
+					console.log("Error is:"+ state);
+					
+					notes_box.val("Error is:"+ state);
+			    }	
+		
+			});
+	  
+		});
+	});	
+			
+		  
+      	  /*	
+			$.ajax({
+			    url: urlname,
+		 		       
+		 		data: msgdata, 
+				dataType   : 'json',
+				contentType: 'application/json',//; charset=UTF-8', // This is the money shot
+			    
+			    //data: 'd1 $ sound "bd bd bd bd sn sn sn sn "',
+			    //contentType: 'text',
+			    
+			    method: method,
+
+			    //This function is run when the request succeeds:
+			    success: function(data, state, res){
+			        //dabutton.setAttribute('disabled',false);
+			        dabutton.attr('disabled',false);
+			        edit_box.css('border-color', 'yellow');
+			        edit_box.css('color', 'yellow');
+			        if(data){
+			        
+			        	var answerPattern = ""
+			        		
+						if(gaction == "push"){
+							answerPattern = $(edit_box).val();
+							
+					        // create popn member 
+					        if(data.valid == "true"){
+					        	notes_box.val("Valid pattern found (value is "+data.valid+")");
+								//$('#parserfb').val("Valid pattern found (value is "+data.valid+")");
+					        	add_to_pop(edit_box.val(),1.0);
+					    	}
+					    	else{
+					        	notes_box.val("Pattern isn't valid (value is "+data.valid+")");
+								//$('#parserfb').val("Pattern isn't valid (value is "+data.valid+")");
+					    	}
+						}
+						if(gaction == "pullmut"){
+							answerPattern = data.response;
+							notes_box.val("Mutation found (shown above)");
+			        	}
+			        
+						//edit_box.text(data);
+						notes_box.text("We should be seeing text: '"+answerPattern+"'");
+						//edit_box.text(data.response);
+
+						edit_box.focus();
+						edit_box.val(answerPattern);
+						edit_box.trigger('textInput');
+
+						ctr = jQuery.Event("keydown");
+						ctr.which = 65;
+						ctr.keyCode = 65;// # Some key code value
+						//$("body").trigger(ctr);
+
+
+						edit_box.trigger(ctr);//'keydown');
+						edit_box.change();
+
+						console.log("data is '"+answerPattern+"'");
+
+			            
+			        }else{
+			             edit_box.text('no data, STATUS CODE: ' + res.status);
+			        }
+
+
+			    },
+			    error: function(data, state){
+					//dabutton.setAttribute('disabled',false);
+					edit_box.css('border-color', 'red');
+					//$error.text(state);
+					console.log("Data is:");
+					console.log(data);
+					console.log("Error is:"+ state);
+					
+					notes_box.val("Error is:"+ state);
+			    }
+			  });
+		 }
+		 edit_box.focus();
+	}*/
 </script>
 
 </head>

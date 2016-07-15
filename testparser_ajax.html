@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AJAX calls using Jquery in Servlet</title>
+<script src="http://code.jquery.com/jquery-latest.js">   
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {                        
+		$('#tokenizer').click(function(event) {  
+			/* This was the original version */
+			//var pattern=$('#input').val();
+			//$.get('parsetidal',{input:pattern},function(responseText){ 
+			//  $('#tokenized').text(responseText);         
+			//});
+			
+			msgdata = JSON.stringify({
+			   		action: "push",
+		    		pattern: $('#tidal_input').val().replace(/\r?\n|\r/," "),//'d1 $ sound "bd bd bd bd sn sn sn sn"'
+		    	})
+			$('#notes_box').val("Pushing pattern to population");
+			
+			$.ajax({
+				url: 'parsetidal',
+				data: msgdata,//'d1 $ sound "bd sn cp bev"',
+				dataType   : 'json',
+				contentType: 'application/json',
+			    method: "GET",//method,
+			    success: function(data, state, res){
+			        //dabutton.setAttribute('disabled',false);
+			        //dabutton.attr('disabled',false);
+			        $('#tidal_input').css('border-color', 'yellow');
+			        //edit_box.css('color', 'yellow');
+			        if(data){
+			        	$('#notes_box').val("Valid pattern found (value is "+data.valid+")");
+			        }
+			    },
+			    error: function(data, state){
+					//dabutton.setAttribute('disabled',false);
+					$('#tidal_input').css('border-color', 'red');
+					//$error.text(state);
+					console.log("Data is:");
+					console.log(data);
+					console.log("Error is:"+ state);
+					
+					$('#notes_box').val("Error is:"+ state);
+			    }	
+		
+			});
+	  
+		});
+	});	
+</script>
+
+</head>
+<body>
+<form id="form1">
+<h1>Test The Tidal Tokenizer</h1>
+Enter a tidal string:<br/>
+<textarea id="tidal_input" rows="6">d1 $ sound "bd sn cp bev"</textarea><br/>
+<input type="button" id="tokenizer" value="Tokenize"/>
+<br/>
+<div id="tokenized">
+<h2>Result:</h2>
+<textarea id="notes_box" rows="6"></textarea>
+</div>
+</form>
+</body>
+</html>

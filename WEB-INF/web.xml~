@@ -30,8 +30,25 @@
         <servlet-name>AnotherServletToJsp</servlet-name>
         <url-pattern>/anotherServletToJsp</url-pattern>
     </servlet-mapping>
-<servlet-mapping>
-    <servlet-name>ActionServlet</servlet-name>
-    <url-pattern>/ActionServlet/*</url-pattern>
-</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActionServlet</servlet-name>
+        <url-pattern>/ActionServlet/*</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+    
+    <!-- trying to get CORS working -->
+    
+    <filter>
+  		<filter-name>CorsFilter</filter-name>
+  		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  <filter-name>CorsFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping>
+    
+    
 </web-app>

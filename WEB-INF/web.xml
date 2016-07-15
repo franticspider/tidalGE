@@ -34,6 +34,14 @@
         <servlet-name>ActionServlet</servlet-name>
         <url-pattern>/ActionServlet/*</url-pattern>
     </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.md</url-pattern>
+	</servlet-mapping>
     
     <!-- trying to get CORS working -->
     
